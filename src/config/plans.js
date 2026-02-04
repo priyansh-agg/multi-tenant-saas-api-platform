@@ -8,5 +8,10 @@ export const PLANS = {
       name: "PRO",
       monthlyRequestLimit: 100000,
       rateLimitPerMinute: 1000
+    },
+    ENTERPRISE: {
+        name:"ENTERPRISE",
+        monthlyRequestLimit: 10000000,
+        rateLimitPerMinute: 10000
     }
   };

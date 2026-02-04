@@ -10,6 +10,7 @@ import { requireOrg } from './middlewares/orgMiddleware.js';
 import { requireApiKey } from './middlewares/apiKeyMiddleware.js';
 import { logUsage } from './middlewares/logUage.js';
 import { rateLimit } from './middlewares/rateLimit.js';
+import { enforceBilling } from './middlewares/enforceBilling.js';
 
 const app = express();
 
@@ -36,7 +37,7 @@ app.get("/org-dashboard",requireAuth,requireOrg,(req,res)=>{
     })
 })
 //api data route
-app.get("/v1/data",requireApiKey,rateLimit,logUsage,(req,res)=>{
+app.get("/v1/data",requireApiKey,rateLimit,enforceBilling,logUsage,(req,res)=>{
     res.json({
         message:"API data accessed",
         orgId: req.org.orgId
